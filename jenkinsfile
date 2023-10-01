@@ -1,0 +1,24 @@
+pipeline{ 
+ agent any
+ stages{
+  stage("clear WS")
+{
+   steps{
+       sh 'rm -r *'
+       sh 'rm -r /var/www/html/*'
+   }
+ }
+stage("clone")
+{
+  steps{
+      sh 'git clone https://github.com/sumathiacse/newproject.git -b master'
+   }
+}
+stage("deploy")
+{
+   steps{
+      sh 'mv 2131_wedding_lite/* /var/www/html/' 
+}
+}
+}
+}
